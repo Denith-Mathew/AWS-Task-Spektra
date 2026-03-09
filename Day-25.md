@@ -218,20 +218,18 @@ Example script:
 ```bash 
 #!/bin/bash
 
-yum update
-yum install docker -y
-systemctl start docker.service
-docker pull cherry2104/java-proj:web
+docker rm -f webapp 2>/dev/null || true
+
+docker pull nginx
 
 docker run -d \
-  --name my-container \
-  --log-driver awslogs \
-  --log-opt awslogs-region=us-east-1 \
-  --log-opt awslogs-group=/docker/my-container \
-  --log-opt awslogs-create-group=true \
-  -p 80:80 \
-  cherry2104/java-proj:web  
-
+-p 80:80 \
+--name webapp \
+--log-driver=awslogs \
+--log-opt awslogs-region=us-east-1 \
+--log-opt awslogs-group=webapp-logs \
+--log-opt awslogs-stream=$(curl -s http://169.254.169.254/latest/meta-data/instance-id) \
+nginx
 ```
 
 Upload this file to the S3 bucket.
@@ -312,18 +310,27 @@ EC2DockerCloudWatchRole
 # Step-6: Execute Docker Script from S3
 
 Connect to EC2 and download the script.
+```json 
 
-```bash id="s1p3sw"
-aws s3 cp s3://day25-docker-scripts/docker-install.sh .
+#!/bin/bash
+
+sudo dnf update -y
+sudo dnf install -y docker awscli
+
+sudo systemctl enable docker
+sudo systemctl start docker
+sudo usermod -aG docker ec2-user
+
+aws logs create-log-group --log-group-name webapp-logs --region us-east-1 || true
+
+aws s3 cp s3://docker-scripts45567/deploy.sh /home/ec2-user/deploy.sh
+
+sudo sed -i 's/\r$//' /home/ec2-user/deploy.sh
+sudo chmod +x /home/ec2-user/deploy.sh
+
+sudo bash /home/ec2-user/deploy.sh
+
 ```
-
-Run the script.
-
-```bash id="92tbcb"
-chmod +x docker-install.sh
-./docker-install.sh
-```
-
 ---
 
 Logs will be sent to **CloudWatch Log Groups**.
