@@ -330,7 +330,7 @@ sudo chmod +x /home/ec2-user/deploy.sh
 
 sudo bash /home/ec2-user/deploy.sh
 
-```
+
 ---
 
 Logs will be sent to **CloudWatch Log Groups**.
