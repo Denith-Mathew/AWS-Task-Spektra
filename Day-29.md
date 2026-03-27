@@ -138,8 +138,7 @@ import json
 from datetime import datetime
 
 def lambda_handler(event, context):
-
-    # LOG every incoming request to CloudWatch
+ # LOG every incoming request to CloudWatch
     print("===== INCOMING REQUEST =====")
     print("Timestamp     :", datetime.utcnow().isoformat())
     print("HTTP Method   :", event.get("httpMethod"))
