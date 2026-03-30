@@ -185,7 +185,6 @@ Before your lab expires, clean up resources to save costs:
 | Allowed Storage SKU | Standard_LRS only |
 | Larger resources | Automatically blocked by Azure Policy |
 | Disk cost optimization | Enabled — disks downgrade when VM is stopped |
-| Budget alerts | Sent at 70%, 90%, 100% of limit |
 | Lab duration | 10 days from registration |
 | Registration | One-time only per email |
 

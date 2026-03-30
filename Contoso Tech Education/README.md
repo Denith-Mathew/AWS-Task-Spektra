@@ -34,13 +34,6 @@ Azure Policy definitions restricting VM sizes and Storage Account SKUs.
 
 ---
 
-### 📜 Usage Policy
-Lab usage rules including allowed resources, blocked resources, cost control and access policy.
-
-🔗 [View Usage Policy](https://raw.githubusercontent.com/Denith-Mathew/AWS-Task-Spektra/refs/heads/main/Contoso%20Tech%20Education/usage-policy.md)
-
----
-
 ### 🖼️ Logo
 Contoso Tech Education custom logo used in the lab launch page.
 
