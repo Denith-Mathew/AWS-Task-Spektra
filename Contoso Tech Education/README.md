@@ -23,14 +23,14 @@ This repository contains all resources for the Azure Cost-Controlled Training La
 ### 📘 Lab Guide
 Step-by-step instructions for students to complete the lab exercises.
 
-🔗 [View Lab Guide](https://raw.githubusercontent.com/Denith-Mathew/AWS-Task-Spektra/main/Contoso%20Tech%20Education/lab_quide.md)
+🔗 [View Lab Guide](https://raw.githubusercontent.com/Denith-Mathew/AWS-Task-Spektra/refs/heads/main/Contoso%20Tech%20Education/lab_quide.md)
 
 ---
 
 ### 📋 Policy Reference
 Azure Policy definitions restricting VM sizes and Storage Account SKUs.
 
-🔗 [View Policy File](https://raw.githubusercontent.com/Denith-Mathew/AWS-Task-Spektra/main/Contoso%20Tech%20Education/policy-vm-storage.md)
+🔗 [View Policy File](https://raw.githubusercontent.com/Denith-Mathew/AWS-Task-Spektra/refs/heads/main/Contoso%20Tech%20Education/policy-vm-storage.md)
 
 ---
 
