@@ -30,7 +30,7 @@ Step-by-step instructions for students to complete the lab exercises.
 ### 📋 Policy Reference
 Azure Policy definitions restricting VM sizes and Storage Account SKUs.
 
-🔗 [View Policy File](https://raw.githubusercontent.com/Denith-Mathew/AWS-Task-Spektra/refs/heads/main/Contoso%20Tech%20Education/policy-vm-storage.md)
+🔗 [View Policy File](https://raw.githubusercontent.com/Denith-Mathew/AWS-Task-Spektra/refs/heads/main/Contoso%20Tech%20Education/policy-vm-storage.json)
 
 ---
 
