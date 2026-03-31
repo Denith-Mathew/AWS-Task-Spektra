@@ -1,66 +1,45 @@
 {
-  "policyRule": {
-    "if": {
-      "anyOf": [
-        {
-          "not": {
-            "anyOf": [
-              {
-                "field": "type",
-                "like": "Microsoft.Compute/virtualMachines/*"
-              },
-              {
-                "field": "type",
-                "like": "Microsoft.Storage/storageAccounts/*"
-              },
-              {
-                "field": "type",
-                "in": [
-                  "Microsoft.Compute/virtualMachines",
-                  "Microsoft.Storage/storageAccounts"
-                ]
-              }
-            ]
+  "if": {
+    "anyOf": [
+      {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/virtualMachines"
+          },
+          {
+            "not": {
+              "anyOf": [
+                {
+                  "field": "Microsoft.Compute/virtualMachines/sku.name",
+                  "in": ["Standard_B1s"]
+                }
+              ]
+            }
           }
-        },
-        {
-          "allOf": [
-            {
-              "field": "type",
-              "equals": "Microsoft.Compute/virtualMachines"
-            },
-            {
-              "not": {
-                "allOf": [
-                  {
-                    "field": "Microsoft.Compute/virtualMachines/hardwareProfile.vmSize",
-                    "in": ["Standard_B1s"]
-                  }
-                ]
-              }
+        ]
+      },
+      {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "not": {
+              "anyOf": [
+                {
+                  "field": "Microsoft.Storage/storageAccounts/sku.name",
+                  "in": ["Standard_LRS"]
+                }
+              ]
             }
-          ]
-        },
-        {
-          "allOf": [
-            {
-              "source": "action",
-              "equals": "Microsoft.Storage/storageAccounts/write"
-            },
-            {
-              "field": "type",
-              "equals": "Microsoft.Storage/storageAccounts"
-            },
-            {
-              "field": "Microsoft.Storage/storageAccounts/sku.name",
-              "notIn": ["Standard_LRS"]
-            }
-          ]
-        }
-      ]
-    },
-    "then": {
-      "effect": "deny"
-    }
+          }
+        ]
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
   }
 }
