@@ -6,17 +6,10 @@
           "anyOf": [
             {
               "field": "type",
-              "like": "Microsoft.Compute/virtualMachines/*"
-            },
-            {
-              "field": "type",
-              "like": "Microsoft.Storage/storageAccounts/*"
-            },
-            {
-              "field": "type",
               "in": [
                 "Microsoft.Compute/virtualMachines",
-                "Microsoft.Storage/storageAccounts"
+                "Microsoft.Storage/storageAccounts",
+                "Microsoft.Resources/resourceGroups"
               ]
             }
           ]
@@ -29,23 +22,13 @@
             "equals": "Microsoft.Compute/virtualMachines"
           },
           {
-            "not": {
-              "allOf": [
-                {
-                  "field": "Microsoft.Compute/virtualMachines/hardwareProfile.vmSize",
-                  "in": ["Standard_B1s"]
-                }
-              ]
-            }
+            "field": "Microsoft.Compute/virtualMachines/hardwareProfile.vmSize",
+            "notIn": ["Standard_B1s"]
           }
         ]
       },
       {
         "allOf": [
-          {
-            "source": "action",
-            "equals": "Microsoft.Storage/storageAccounts/write"
-          },
           {
             "field": "type",
             "equals": "Microsoft.Storage/storageAccounts"
