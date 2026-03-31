@@ -1,0 +1,44 @@
+[
+    {
+        "Name": "Contoso Tech Education — Azure Training Lab Guide",
+        "Language": "English",
+        "Files": [
+            {
+                "RawFilePath": "https://raw.githubusercontent.com/Denith-Mathew/AWS-Task-Spektra/refs/heads/main/Contoso%20Tech%20Education/00-overview.md",
+                "Order": 1
+            },
+            {
+                "RawFilePath": "https://raw.githubusercontent.com/Denith-Mathew/AWS-Task-Spektra/refs/heads/main/Contoso%20Tech%20Education/01-registration.md",
+                "Order": 2
+            },
+            {
+                "RawFilePath": "https://raw.githubusercontent.com/Denith-Mathew/AWS-Task-Spektra/refs/heads/main/Contoso%20Tech%20Education/02-azure-signin.md",
+                "Order": 3
+            },
+            {
+                "RawFilePath": "https://raw.githubusercontent.com/Denith-Mathew/AWS-Task-Spektra/refs/heads/main/Contoso%20Tech%20Education/03-storage-account.md",
+                "Order": 4
+            },
+            {
+                "RawFilePath": "https://raw.githubusercontent.com/Denith-Mathew/AWS-Task-Spektra/refs/heads/main/Contoso%20Tech%20Education/04-virtual-machine.md",
+                "Order": 5
+            },
+            {
+                "RawFilePath": "https://raw.githubusercontent.com/Denith-Mathew/AWS-Task-Spektra/refs/heads/main/Contoso%20Tech%20Education/05-connect-vm.md",
+                "Order": 6
+            },
+            {
+                "RawFilePath": "https://raw.githubusercontent.com/Denith-Mathew/AWS-Task-Spektra/refs/heads/main/Contoso%20Tech%20Education/06-exercises.md",
+                "Order": 7
+            },
+             {
+                "RawFilePath": "https://raw.githubusercontent.com/Denith-Mathew/AWS-Task-Spektra/refs/heads/main/Contoso%20Tech%20Education/07-cleanup.md",
+                "Order": 8
+            },
+             {
+                "RawFilePath": "https://raw.githubusercontent.com/Denith-Mathew/AWS-Task-Spektra/refs/heads/main/Contoso%20Tech%20Education/08-rules-and-help.md",
+                "Order": 9
+            }
+        ]
+    }
+]
