@@ -1,64 +1,66 @@
 {
-  "if": {
-    "anyOf": [
-      {
-        "not": {
-          "anyOf": [
+  "policyRule": {
+    "if": {
+      "anyOf": [
+        {
+          "not": {
+            "anyOf": [
+              {
+                "field": "type",
+                "like": "Microsoft.Compute/virtualMachines/*"
+              },
+              {
+                "field": "type",
+                "like": "Microsoft.Storage/storageAccounts/*"
+              },
+              {
+                "field": "type",
+                "in": [
+                  "Microsoft.Compute/virtualMachines",
+                  "Microsoft.Storage/storageAccounts"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "allOf": [
             {
               "field": "type",
-              "like": "Microsoft.Compute/virtualMachines/*"
+              "equals": "Microsoft.Compute/virtualMachines"
+            },
+            {
+              "not": {
+                "allOf": [
+                  {
+                    "field": "Microsoft.Compute/virtualMachines/hardwareProfile.vmSize",
+                    "in": ["Standard_B1s"]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "source": "action",
+              "equals": "Microsoft.Storage/storageAccounts/write"
             },
             {
               "field": "type",
-              "like": "Microsoft.Storage/storageAccounts/*"
+              "equals": "Microsoft.Storage/storageAccounts"
             },
             {
-              "field": "type",
-              "in": [
-                "Microsoft.Compute/virtualMachines",
-                "Microsoft.Storage/storageAccounts"
-              ]
+              "field": "Microsoft.Storage/storageAccounts/sku.name",
+              "notIn": ["Standard_LRS"]
             }
           ]
         }
-      },
-      {
-        "allOf": [
-          {
-            "field": "type",
-            "equals": "Microsoft.Compute/virtualMachines"
-          },
-          {
-            "not": {
-              "allOf": [
-                {
-                  "field": "Microsoft.Compute/virtualMachines/hardwareProfile.vmSize",
-                  "in": ["Standard_B1s"]
-                }
-              ]
-            }
-          }
-        ]
-      },
-      {
-        "allOf": [
-          {
-            "source": "action",
-            "equals": "Microsoft.Storage/storageAccounts/write"
-          },
-          {
-            "field": "type",
-            "equals": "Microsoft.Storage/storageAccounts"
-          },
-          {
-            "field": "Microsoft.Storage/storageAccounts/sku.name",
-            "notIn": ["Standard_LRS"]
-          }
-        ]
-      }
-    ]
-  },
-  "then": {
-    "effect": "deny"
+      ]
+    },
+    "then": {
+      "effect": "deny"
+    }
   }
 }
