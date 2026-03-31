@@ -1,65 +1,64 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [
-    {
-      "type": "Microsoft.Authorization/policyDefinitions",
-      "apiVersion": "2021-06-01",
-      "name": "restrict-vm-and-storage-sku",
-      "properties": {
-        "policyType": "Custom",
-        "mode": "All",
-        "displayName": "Restrict VM to Standard_B1s and Storage to Standard_LRS",
-        "description": "Denies VM creation other than Standard_B1s size and Storage Account creation other than Standard_LRS redundancy",
-        "policyRule": {
-          "if": {
-            "anyOf": [
-              {
-                "allOf": [
-                  {
-                    "field": "type",
-                    "equals": "Microsoft.Compute/virtualMachines"
-                  },
-                  {
-                    "field": "Microsoft.Compute/virtualMachines/hardwareProfile.vmSize",
-                    "notIn": ["Standard_B1s"]
-                  }
-                ]
-              },
-              {
-                "allOf": [
-                  {
-                    "field": "type",
-                    "equals": "Microsoft.Storage/storageAccounts"
-                  },
-                  {
-                    "field": "Microsoft.Storage/storageAccounts/sku.name",
-                    "notIn": ["Standard_LRS"]
-                  }
-                ]
-              }
-            ]
-          },
-          "then": {
-            "effect": "Deny"
-          }
+  "if": {
+    "anyOf": [
+      {
+        "not": {
+          "anyOf": [
+            {
+              "field": "type",
+              "like": "Microsoft.Compute/virtualMachines/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Storage/storageAccounts/*"
+            },
+            {
+              "field": "type",
+              "in": [
+                "Microsoft.Compute/virtualMachines",
+                "Microsoft.Storage/storageAccounts"
+              ]
+            }
+          ]
         }
+      },
+      {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/virtualMachines"
+          },
+          {
+            "not": {
+              "allOf": [
+                {
+                  "field": "Microsoft.Compute/virtualMachines/hardwareProfile.vmSize",
+                  "in": ["Standard_B1s"]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "allOf": [
+          {
+            "source": "action",
+            "equals": "Microsoft.Storage/storageAccounts/write"
+          },
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "field": "Microsoft.Storage/storageAccounts/sku.name",
+            "notIn": ["Standard_LRS"]
+          }
+        ]
       }
-    },
-    {
-      "type": "Microsoft.Authorization/policyAssignments",
-      "apiVersion": "2021-06-01",
-      "name": "restrict-vm-and-storage-sku-assignment",
-      "location": "eastus",
-      "dependsOn": [
-        "[subscriptionResourceId('Microsoft.Authorization/policyDefinitions', 'restrict-vm-and-storage-sku')]"
-      ],
-      "properties": {
-        "policyDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/policyDefinitions', 'restrict-vm-and-storage-sku')]",
-        "displayName": "Restrict VM to Standard_B1s and Storage to Standard_LRS",
-        "description": "Enforces VM size and Storage SKU restrictions across the subscription",
-        "scope": "[subscription().id]"
-      }
-    }
-  ]
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
 }
