@@ -13,6 +13,10 @@ Try the following exercises within your allowed resources.
 5. Generate a **SAS token** for the blob and access it using the SAS URL.
 
 ---
+<img src ="lab-screenshots\Screenshot 2026-04-01 001951.png">
+
+---
+---
 
 ## Exercise B — VM Management
 
@@ -21,6 +25,12 @@ Try the following exercises within your allowed resources.
    - Notice: the disk cost optimization will automatically downgrade your disk tier while stopped.
 3. Click **Start** to restart the VM.
 4. Reconnect via SSH or RDP and verify everything still works.
+---
+<img src ="lab-screenshots\Screenshot 2026-04-01 011015.png">
+
+---
+---
+<img src ="lab-screenshots\Screenshot 2026-04-01 011041.png">
 
 ---
 
@@ -29,6 +39,15 @@ Try the following exercises within your allowed resources.
 1. Go to **Cost Management + Billing** in the Azure Portal.
 2. Click **Cost analysis** → filter by your Resource Group.
 3. Observe your accumulated cost.
+
+---
+<img src ="lab-screenshots\Screenshot 2026-04-01 012036.png">
+
+---
+---
+<img src ="lab-screenshots\Screenshot 2026-04-01 012439.png">
+
+---
 
 > **Note:** If your usage reaches 70%, 90%, or 100% of the budget limit, your instructor will receive an email alert. Stay within limits.
 

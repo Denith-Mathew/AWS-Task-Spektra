@@ -6,9 +6,25 @@ Before your lab expires, clean up resources to save costs.
 
 1. Go to your **Resource Group**.
 2. Delete the VM first (this also removes the associated NIC, public IP, and disk).
-3. Delete the Storage Account.
-4. Verify the Resource Group is empty.
 
+---
+<img src ="lab-screenshots\Screenshot 2026-04-01 011015.png">
+
+---
+---
+<img src ="lab-screenshots\Screenshot 2026-04-01 011041.png">
+
+---
+3. Delete the Storage Account.
+---
+<img src ="lab-screenshots\Screenshot 2026-04-01 012250.png">
+
+---
+4. Verify the Resource Group is empty.
+---
+<img src ="lab-screenshots\Screenshot 2026-04-01 012952.png">
+
+---
 > Your environment will be **automatically deleted** when the 10-day duration expires, but early cleanup is good practice.
 
 ---

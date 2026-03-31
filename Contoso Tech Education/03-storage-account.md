@@ -16,12 +16,33 @@
 | Redundancy | **LRS (Locally-redundant storage)** |
 
 4. Click **Review + Create** → **Create**.
+
+---
+<img src ="lab-screenshots\Screenshot 2026-04-01 000346.png">
+
+---
+---
+<img src ="lab-screenshots\Screenshot 2026-04-01 000554.png">
+
+---
+
 5. Wait for deployment to succeed.
+---
+<img src ="lab-screenshots\Screenshot 2026-04-01 001805.png">
+
+---
 6. Navigate to your new storage account and explore:
    - **Containers** — create a blob container named `labdata`
+   ---
+<img src ="lab-screenshots\Screenshot 2026-04-01 001951.png">
+
+---
    - **Access keys** — view (do not share) your storage keys
    - **Properties** — note the primary endpoint URL
+---
+<img src ="lab-screenshots\Screenshot 2026-04-01 002324.png">
 
+---
 ## Verify
 
 - Open your storage account → **Overview** → confirm SKU shows **Standard_LRS**.

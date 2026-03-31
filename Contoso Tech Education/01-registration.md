@@ -13,13 +13,19 @@
 <img src ="lab-screenshots\1.png">
 
 ----
-<img src ="lab-screenshots\2.png">
+
 4. You will receive a confirmation email with your lab credentials.
+----
+
+<img src ="lab-screenshots\2.png">
+
+----
 
 5 . Click **Launch Lab** to start your environment.
 
 ----
 <img src ="lab-screenshots\3L.png">
+
 ----
 
 6. Wait for the deployment to complete (watch the countdown timer).
@@ -33,6 +39,11 @@
    - **Azure Password**
    - **Resource Group Name**
    - **Subscription ID**
+
+   ----
+<img src ="lab-screenshots\Screenshot 2026-04-01 013413.png">
+
+----
 
 > **Important:** You can only register once using your email. Your lab environment expires automatically 10 days after registration.
 

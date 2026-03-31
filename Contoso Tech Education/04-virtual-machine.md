@@ -12,20 +12,53 @@
 | Resource Group | Select your assigned resource group |
 | Virtual machine name | `contoso-vm-<yourname>` |
 | Region | Same as your lab region |
-| Image | **Ubuntu Server 22.04 LTS** or **Windows Server 2022 Datacenter** |
+| Image | **Ubuntu Server 24.04 LTS - x64 Gen2** or **Windows Server 2022 Datacenter** |
 | Size | **Standard_B1s** (click "See all sizes" → filter by B1s) |
 | Authentication | Password |
 | Username | `azurestudent` |
 | Password | Choose a strong password (12+ chars, upper, lower, number, special) |
+  ---
+<img src ="lab-screenshots\Screenshot 2026-04-01 003818.png">
+
+---
+
+<img src ="lab-screenshots\Screenshot 2026-04-01 004145.png">
+
+    ---
+
+<img src ="lab-screenshots\Screenshot 2026-04-01 004234.png">
+
+---
+---
+<img src ="lab-screenshots\Screenshot 2026-04-01 004359.png">
+
+---
 
 4. Under **Disks** tab:
    - OS disk type: **Standard HDD** (recommended for cost savings)
+     ---
+<img src ="lab-screenshots\Screenshot 2026-04-01 004534.png">
+
+---
 
 5. Under **Networking** tab:
    - Leave defaults (a new vNet, subnet, and public IP will be created)
+     ---
+<img src ="lab-screenshots\Screenshot 2026-04-01 004628.png">
+
+---
 
 6. Click **Review + Create** → **Create**.
+  ---
+<img src ="lab-screenshots\Screenshot 2026-04-01 005004.png">
+
+---
+
 7. Wait for deployment to complete.
+  ---
+<img src ="lab-screenshots\Screenshot 2026-04-01 005520.png">
+
+---
 
 ## Verify
 
