@@ -50,8 +50,9 @@
       "type": "Microsoft.Authorization/policyAssignments",
       "apiVersion": "2021-06-01",
       "name": "restrict-vm-and-storage-sku-assignment",
+      "location": "eastus",
       "dependsOn": [
-        "restrict-vm-and-storage-sku"
+        "[subscriptionResourceId('Microsoft.Authorization/policyDefinitions', 'restrict-vm-and-storage-sku')]"
       ],
       "properties": {
         "policyDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/policyDefinitions', 'restrict-vm-and-storage-sku')]",
