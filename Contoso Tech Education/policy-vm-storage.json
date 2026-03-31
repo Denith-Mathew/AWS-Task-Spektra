@@ -1,47 +1,72 @@
 {
-  "if": {
-    "anyOf": [
-      {
-        "not": {
-          "anyOf": [
-            {
-              "field": "type",
-              "in": [
-                "Microsoft.Compute/virtualMachines",
-                "Microsoft.Storage/storageAccounts",
-                "Microsoft.Resources/resourceGroups"
+  "properties": {
+    "policyType": "Custom",
+    "mode": "All",
+    "displayName": "Restrict VM to Standard_B1s and Storage to Standard_LRS",
+    "description": "Denies VM creation other than Standard_B1s and Storage other than Standard_LRS",
+    "policyRule": {
+      "if": {
+        "anyOf": [
+          {
+            "not": {
+              "anyOf": [
+                {
+                  "field": "type",
+                  "like": "Microsoft.Compute/virtualMachines/*"
+                },
+                {
+                  "field": "type",
+                  "like": "Microsoft.Storage/storageAccounts/*"
+                },
+                {
+                  "field": "type",
+                  "in": [
+                    "Microsoft.Compute/virtualMachines",
+                    "Microsoft.Storage/storageAccounts"
+                  ]
+                }
               ]
             }
-          ]
-        }
-      },
-      {
-        "allOf": [
-          {
-            "field": "type",
-            "equals": "Microsoft.Compute/virtualMachines"
           },
           {
-            "field": "Microsoft.Compute/virtualMachines/hardwareProfile.vmSize",
-            "notIn": ["Standard_B1s"]
+            "allOf": [
+              {
+                "field": "type",
+                "equals": "Microsoft.Compute/virtualMachines"
+              },
+              {
+                "not": {
+                  "allOf": [
+                    {
+                      "field": "Microsoft.Compute/virtualMachines/hardwareProfile.vmSize",
+                      "in": ["Standard_B1s"]
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "source": "action",
+                "equals": "Microsoft.Storage/storageAccounts/write"
+              },
+              {
+                "field": "type",
+                "equals": "Microsoft.Storage/storageAccounts"
+              },
+              {
+                "field": "Microsoft.Storage/storageAccounts/sku.name",
+                "notIn": ["Standard_LRS"]
+              }
+            ]
           }
         ]
       },
-      {
-        "allOf": [
-          {
-            "field": "type",
-            "equals": "Microsoft.Storage/storageAccounts"
-          },
-          {
-            "field": "Microsoft.Storage/storageAccounts/sku.name",
-            "notIn": ["Standard_LRS"]
-          }
-        ]
+      "then": {
+        "effect": "deny"
       }
-    ]
-  },
-  "then": {
-    "effect": "deny"
+    }
   }
 }
